@@ -1,0 +1,137 @@
+{% extends 'base.html'%}
+
+{%block content%}
+
+<div class="text-white">
+
+  <div class="nav w-full flex flex-col items-center mt-10">
+    <ul class="bg-gray-700 w-[300px] bg-gray-700 p-10 rounded-xl flex gap-8">
+      <li class="mt-6">
+          <a href="add">
+              <ul class="bg-green-700 p-3 rounded-[10px] cursor-pointer hover:bg-green-900 hover:scale-110 duration-300 ease-in-out text-center">Add Hotel</ul>
+          </a>
+      </li>
+      <li class="mt-6">
+          <a href="api/hotel">
+              <ul class="bg-purple-700 p-3 rounded-[10px] cursor-pointer hover:bg-purple-900 hover:scale-110 duration-300 ease-in-out text-center">View API</ul>
+          </a>
+      </li>
+  </ul>
+  </div>
+    <div class="title_hotel text-3xl font-bold mt-10 text-center">Hotels List :</div>
+  
+        {% comment %} {%for hotel in hotels%}
+        <div class="bg-gray-800 sm:w-[700px] w-[400px] p-4 rounded-[5px]">
+            <ul class="">
+                <li class="flex justify-between">
+                    <div>
+                        <h1 class="text-4xl">{{hotel.hotel_name}}</h1>
+                    </div>
+                    <div class="gap-5">
+                        <a href="edit/{{hotel.slug}}">
+                            <button class="bg-green-700 p-2 rounded-[5px] cursor-pointer hover:bg-green-900 hover:scale-110  duration-300 ease-in-out">Edit</button>
+                        </a>
+                        <a href="delete/{{hotel.slug}}">
+                            <button class="bg-red-700 p-2 rounded-[5px] cursor-pointer hover:bg-red-900 hover:scale-110  duration-300 ease-in-out ml-4">Delete</button>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+        
+        {%endfor%} {% endcomment %}
+
+        <div class="flex flex-col mx-[10%] mt-10">
+            <div class=" overflow-x-auto sm:-mx-6 lg:-mx-8">
+              <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                <div class="overflow-x-auto">
+                  <table class="min-w-full">
+                    <thead class="bg-gray-800 border-b">
+                      <tr class="text-[15px]">
+                        <th scope="col" class="  px-6 py-4 text-left">
+                          Hotel Name
+                        </th>
+                        <th scope="col" class="  px-6 py-4 text-left">
+                            Hotel City
+                        </th>
+                        <th scope="col" class="  px-6 py-4 text-left">
+                          Phone number
+                        </th>
+                        <th scope="col" class="  px-6 py-4 text-left">
+                          Total Room
+                        </th>
+                        <th scope="col" class="  px-6 py-4 text-left">
+                          Total Single Room
+                        </th>
+                        <th scope="col" class="  px-6 py-4 text-left">
+                          Total Double Room
+                        </th>
+                        <th scope="col" class="  px-6 py-4 text-left">
+                          Total Family Room
+                        </th>
+                        <th scope="col" class="  px-6 py-4 text-left">
+                          Total Luxary Room
+                        </th>
+                        <th scope="col" class="  px-6 py-4 text-left">
+                          Manager name
+                        </th>
+                        <th scope="col" class="  px-6 py-4 text-left">
+                          Edit
+                        </th>
+                        <th scope="col" class="  px-6 py-4 text-left">
+                          Delete
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for hotel in hotels reversed %}
+                      <tr class="bg-gray-800 border-b transition duration-300 ease-in-out hover:bg-gray-900">
+                        {% comment %} <td class="px-6 py-4 whitespace-nowrap  ">{{hotel.id}}</td> {% endcomment %}
+                        <td class="  font-light px-6 py-4 whitespace-nowrap">
+                          {{hotel.hotel_name}}
+                        </td>
+                        <td class="  font-light px-6 py-4 whitespace-nowrap">
+                          {{hotel.hotel_city}}
+                        </td>
+                        <td class="  font-light px-6 py-4 whitespace-nowrap">
+                          {{hotel.phone_number}}
+                        </td>
+                        <td class="  font-light px-6 py-4 whitespace-nowrap">
+                          {{hotel.total_rooms}}
+                        </td>
+                        <td class="  font-light px-6 py-4 whitespace-nowrap">
+                          {{hotel.total_single_room}}
+                        </td>
+                        <td class="  font-light px-6 py-4 whitespace-nowrap">
+                          {{hotel.total_double_room}}
+                        </td>
+                        <td class="  font-light px-6 py-4 whitespace-nowrap">
+                          {{hotel.total_family_room}}
+                        </td>
+                        <td class="  font-light px-6 py-4 whitespace-nowrap">
+                          {{hotel.total_luxary_room}}
+                        </td>
+                        <td class="  font-light px-6 py-4 whitespace-nowrap">
+                          {{hotel.managers_name}}
+                        </td>
+                        <td class="  font-light px-6 py-4 whitespace-nowrap">
+                            <a href="edit/{{hotel.slug}}">
+                                <button class="bg-green-700 p-2 rounded-[5px] cursor-pointer hover:bg-green-900 hover:scale-110  duration-300 ease-in-out">Edit</button>
+                            </a>
+                        </td>
+                        <td class="  font-light px-6 py-4 whitespace-nowrap">
+                            <button class="bg-red-700 p-2 rounded-[5px] cursor-pointer hover:bg-red-900 hover:scale-110  duration-300 ease-in-out ml-4">Delete</button>
+                        </a>
+                        </td>
+                      </tr>
+                      {%endfor%}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>   
+</div>
+
+{%endblock%}

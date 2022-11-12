@@ -1,0 +1,236 @@
+{%extends 'base.html'%}
+
+{%block content%}
+{% load tailwind_filters %}
+<div class="admin-page-merostay  h-[200vh]">
+  <div class="admin-page-merostay  h-[200vh]">
+    <div class="nav w-full flex flex-col items-center mt-10">
+      <ul class="bg-gray-700 w-[450px] bg-gray-700 p-10 rounded-xl flex gap-8">
+        <li class="mt-6">
+            <a href="/hotels">
+                <ul class="bg-yellow-700 p-3 rounded-[10px] cursor-pointer hover:bg-yellow-900 hover:scale-110 duration-300 ease-in-out text-center">View Hotel / edit / delete</ul>
+            </a>
+        </li>
+        <li class="mt-6">
+            <a href="/api/hotel">
+                <ul class="bg-purple-700 p-3 rounded-[10px] cursor-pointer hover:bg-purple-900 hover:scale-110 duration-300 ease-in-out text-center">View API</ul>
+            </a>
+        </li>
+    </ul>
+    </div>
+    <div class="text-4xl text-white text-center font-bold mt-10 ">Add Hotel</div>
+
+<div class="flex items-center justify-center p-12">
+
+    <div class="mx-auto w-full max-w-[550px]">
+
+{%for message in messages%}
+{% if message.tags == "error" %}
+<div class="text-white text-xl font-bold p-3 bg-red-900 rounded-xl my-8 italic">
+  {{message}}
+</div>
+{%endif%}
+{% if message.tags == "success" %}
+<div class="text-white text-xl font-bold p-3 bg-green-900 rounded-xl my-8 italic">
+  {{message}}
+</div>
+{%endif%}
+{% if message.tags == "warning" %}
+<div class="text-white text-xl font-bold p-3 bg-yellow-900 rounded-xl my-8 italic">
+  {{message}}
+</div>
+{%endif%}
+{% if message.tags == "info" %}
+<div class="text-white text-xl font-bold p-3 bg-blue-700 rounded-xl my-8 italic">
+  {{message}}
+</div>
+{%endif%}
+
+{%endfor%}
+
+      <form method="post" >
+        {%csrf_token%}
+        {{form|crispy}}
+        <button
+        class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-base font-semibold text-white outline-none" type="submit"
+      >
+        Submit
+      </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+  .text-gray-700{
+    color: white;
+  }
+  .textinput{
+    color:black;
+  }
+
+  option{
+    color:black;
+  }
+  .relative .text-gray-700{
+    color:black;
+  }
+  .numberinput {
+    color:black;
+  }
+</style>
+
+
+
+{%endblock%}
+
+
+
+        <!-- mero stay hotel addding forms  -->
+
+      <!-- <form method="POST">
+        {%csrf_token%}
+        <div class="mb-5">
+          <label
+            for="name"
+            class="mb-3 block text-base font-medium text-white"
+          >
+            Hotel Name
+          </label>
+          <input
+            type="text"
+            name="hotelname"
+            id="name"
+            placeholder="Hotel Name"
+            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium  outline-none focus:border-[#6A64F1] focus:shadow-md"
+          />
+        </div>
+        <div class="mb-5">
+          <label
+            for="address"
+            class="mb-3 block text-base font-medium text-white"
+          >
+            Hotel Address
+          </label>
+          <input
+            type="text"
+            name="hoteladdress"
+            id="address"
+            placeholder="Hotel Address"
+            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium  outline-none focus:border-[#6A64F1] focus:shadow-md"
+          />
+        </div>
+        <div class="mb-5">
+            <label
+              for="city"
+              class="mb-3 block text-base font-medium text-white"
+            >
+              Hotel City
+            </label>
+            <input
+              type="text"
+              name="hotelcity"
+              id="city"
+              placeholder="Hotel City"
+              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium  outline-none focus:border-[#6A64F1] focus:shadow-md"
+            />
+          </div>
+          <div class="mb-5">
+            <label
+              for="managername"
+              class="mb-3 block text-base font-medium text-white"
+            >
+              Manager Name
+            </label>
+            <input
+              type="text"
+              name="managername"
+              id="name"
+              placeholder="Manager Name"
+              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium  outline-none focus:border-[#6A64F1] focus:shadow-md"
+            />
+          </div>
+          <div class="mb-5">
+            <label
+              for="phnum"
+              class="mb-3 block text-base font-medium text-white"
+            >
+              Hotel Phone number :
+            </label>
+            <input
+              type="text"
+              name="phnum"
+              id="phnum"
+              placeholder="hotel phone number"
+              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium  outline-none focus:border-[#6A64F1] focus:shadow-md"
+            />
+          </div>
+          <div class="mb-5">
+            <label
+              for="owner"
+              class="mb-3 block text-base font-medium text-white"
+            >
+              Owner Name :
+            </label>
+            <input
+              type="text"
+              name="ownername"
+              id="owner"
+              placeholder="Owner name"
+              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium  outline-none focus:border-[#6A64F1] focus:shadow-md"
+            />
+          </div>
+          <div class="mb-5">
+            <label
+              for="owphnum"
+              class="mb-3 block text-base font-medium text-white"
+            >
+             Owner Phone number :
+            </label>
+            <input
+              type="text"
+              name="ownerphnum"
+              id="owphnum"
+              placeholder="Owner Phone number"
+              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium  outline-none focus:border-[#6A64F1] focus:shadow-md"
+            />
+          </div>
+
+          <div class="mb-5">
+            <label
+              for="room_num"
+              class="mb-3 block text-base font-medium text-white"
+            >
+             Total Room number :
+            </label>
+            <input
+              type="number"
+              name="room_num"
+              id="room_num"
+              placeholder="Total Room number"
+              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium  outline-none focus:border-[#6A64F1] focus:shadow-md"
+            />
+          </div>
+       
+          <div class="mb-5">
+            <input type="checkbox" id="vehicle1" name="room_type" value="single">
+            <label class="mb-3  text-base font-medium text-white" for="single">Single</label><br>
+            <input type="checkbox" id="vehicle2" name="room_type" value="double">
+            <label class="mb-3  text-base font-medium text-white" for="double">Double</label><br>
+            <input type="checkbox" id="family" name="room_type" value="family">
+            <label class="mb-3  text-base font-medium text-white" for="family">Family</label><br>
+            <input type="checkbox" id="Luxary" name="room_type" value="luxary">
+            <label class="mb-3  text-base font-medium text-white" for="Luxary">Luxary</label><br>
+
+           
+            
+
+          </div>
+        <div>
+          <button
+            class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-base font-semibold text-white outline-none" type="submit"
+          >
+            Submit
+          </button>
+        </div>
+      </form> -->

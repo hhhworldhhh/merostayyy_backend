@@ -1,0 +1,98 @@
+{%extends 'base.html'%}
+
+{%block content%}
+{%for message in messages%}
+{% if message.tags == "error" %}
+<div class="text-white text-xl font-bold p-3 bg-red-900 rounded-xl my-8 italic">
+  {{message}}
+</div>
+{%endif%}
+{% if message.tags == "success" %}
+<div class="text-white text-xl font-bold p-3 bg-green-900 rounded-xl my-8 italic">
+  {{message}}
+</div>
+{%endif%}
+{% if message.tags == "warning" %}
+<div class="text-white text-xl font-bold p-3 bg-yellow-900 rounded-xl my-8 italic">
+  {{message}}
+</div>
+{%endif%}
+{% if message.tags == "info" %}
+<div class="text-white text-xl font-bold p-3 bg-blue-700 rounded-xl my-8 italic">
+  {{message}}
+</div>
+{%endif%}
+
+{%endfor%}
+<div class="text-white ">
+    <div class="title text-3xl font-bold text-center mt-10">Admin Pannel for <span class="text-blue-500">Mero Stay 😴🛏️</span> </div>
+    
+    <div class=" sm:flex-row flex flex-col   justify-center items-center gap-y-6  sm:gap-x-8 text-2xl font-bold  mt-10">
+        <div>
+        
+            <ul class="bg-gray-700 w-[400px] bg-gray-700 p-10 rounded-xl">
+            <li class="">
+                <a href="add">
+                    <ul class="bg-green-700 p-3 rounded-[10px] cursor-pointer hover:bg-green-900 hover:scale-110 duration-300 ease-in-out text-center">Add Hotel</ul>
+                </a>
+            </li>
+            <li class="mt-6">
+                <a href="hotels">
+                    <ul class="bg-yellow-700 p-3 rounded-[10px] cursor-pointer hover:bg-yellow-900 hover:scale-110 duration-300 ease-in-out text-center">View Hotel / edit / delete</ul>
+                </a>
+            </li>
+            <li class="mt-6">
+                <a href="api/hotel">
+                    <ul class="bg-purple-700 p-3 rounded-[10px] cursor-pointer hover:bg-purple-900 hover:scale-110 duration-300 ease-in-out text-center">View API</ul>
+                </a>
+            </li>
+        </ul>
+        </div>
+        <div class=" flex flex-col gap-3 text-[16px]">
+
+            <div class="bg-gray-700 w-[300px] p-2 text-center rounded-xl hover:scale-110 duration-300 ease-in-out">
+                    <div class="total">Total Hotel : {{hotel_num}}</div>
+            </div>
+            <div class="bg-gray-700 w-[300px] p-2 text-center rounded-xl hover:scale-110 duration-300 ease-in-out">
+                <a href="hotelcity/Kathmandu">
+
+                    <div class="total">Num in Kathmandu : {{hotel_ktm_num}}</div>
+                </a>
+
+            </div>
+            <div class="bg-gray-700 w-[300px] p-2 text-center rounded-xl hover:scale-110 duration-300 ease-in-out">
+                <a href="hotelcity/Lalitpur">
+                    <div class="total">Num in Lalitpur : {{hotel_lalitpur}}</div>
+                </a>
+            </div>
+            <div class="bg-gray-700 w-[300px] p-2 text-center rounded-xl hover:scale-110 duration-300 ease-in-out">
+                <a href="hotelcity/Bhaktapur">
+                    <div class="total">Num in Bhaktapur : {{hotel_bhaktapur}}</div>
+                </a>
+            </div>
+            <div class="bg-gray-700 w-[300px] p-2 text-center rounded-xl hover:scale-110 duration-300 ease-in-out">
+                <a href="hotelcity/Chitwan">
+                    <div class="total">Num in Chitwan : {{hotel_chitwan}}</div>
+                </a>
+            </div>
+            <div class="bg-gray-700 w-[300px] p-2 text-center rounded-xl hover:scale-110 duration-300 ease-in-out">
+                <a href="hotelcity/Nagarkot">
+                    <div class="total">Num in Nagarkot : {{hotel_nagarkot}}</div>
+                </a>
+            </div>
+            <div class="bg-gray-700 w-[300px] p-2 text-center rounded-xl hover:scale-110 duration-300 ease-in-out">
+                <a href="hotelcity/Pokhara">
+                    <div class="total">Num in Pokhara : {{hotel_pokhara}}</div>
+                </a>
+            </div>
+            <div class="bg-gray-700 w-[300px] p-2 text-center rounded-xl hover:scale-110 duration-300 ease-in-out">
+                <a href="hotelcity/Butwal">
+                    <div class="total">Num in Butwal : {{hotel_butwal}}</div>
+                </a>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

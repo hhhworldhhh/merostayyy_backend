@@ -1,0 +1,80 @@
+{%extends 'base.html'%}
+
+{%block content%}
+{% load tailwind_filters %}
+{%for message in messages%}
+{% if message.tags == "error" %}
+<div class="text-white text-xl font-bold p-3 bg-red-900 rounded-xl my-8 italic">
+  {{message}}
+</div>
+{%endif%}
+{% if message.tags == "success" %}
+<div class="text-white text-xl font-bold p-3 bg-green-900 rounded-xl my-8 italic">
+  {{message}}
+</div>
+{%endif%}
+{% if message.tags == "warning" %}
+<div class="text-white text-xl font-bold p-3 bg-yellow-900 rounded-xl my-8 italic">
+  {{message}}
+</div>
+{%endif%}
+{% if message.tags == "info" %}
+<div class="text-white text-xl font-bold p-3 bg-blue-700 rounded-xl my-8 italic">
+  {{message}}
+</div>
+{%endif%}
+
+{%endfor%}
+<div class="admin-page-merostay  h-[200vh]">
+  <div class="nav w-full flex flex-col items-center mt-10">
+    <ul class="bg-gray-700 w-[550px] bg-gray-700 p-10 rounded-xl flex gap-8">
+      <li class="mt-6">
+          <a href="/add">
+              <ul class="bg-green-700 p-3 rounded-[10px] cursor-pointer hover:bg-green-900 hover:scale-110 duration-300 ease-in-out text-center">Add Hotel</ul>
+          </a>
+      </li>
+      <li class="mt-6">
+          <a href="/hotels">
+              <ul class="bg-yellow-700 p-3 rounded-[10px] cursor-pointer hover:bg-yellow-900 hover:scale-110 duration-300 ease-in-out text-center">View Hotel / edit / delete</ul>
+          </a>
+      </li>
+      <li class="mt-6">
+          <a href="/api/hotel">
+              <ul class="bg-purple-700 p-3 rounded-[10px] cursor-pointer hover:bg-purple-900 hover:scale-110 duration-300 ease-in-out text-center">View API</ul>
+          </a>
+      </li>
+  </ul>
+  </div>
+    <div class="text-4xl text-white text-center font-bold mt-10 ">Add Hotel</div>
+    <form method="post" class="text-white mx-[20%]">
+        {%csrf_token%}
+        {{forms|crispy}}
+        <button
+        class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-base font-semibold text-white outline-none" type="submit"
+      >
+        Submit
+      </button>
+    </form>
+
+  </div>
+</div>
+<style>
+  .text-gray-700{
+    color: white;
+  }
+  .textinput{
+    color:black;
+  }
+
+  option{
+    color:black;
+  }
+  .relative .text-gray-700{
+    color:black;
+  }
+  .numberinput {
+    color:black;
+  }
+</style>
+
+{%endblock%}

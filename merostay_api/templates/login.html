@@ -1,0 +1,64 @@
+{% extends 'base.html'%}
+
+{%block content%}
+
+{% load tailwind_filters %}
+{%for message in messages%}
+{% if message.tags == "error" %}
+<div class="text-white text-xl font-bold p-3 bg-red-900 rounded-xl my-8 italic">
+  {{message}}
+</div>
+{%endif%}
+{% if message.tags == "success" %}
+<div class="text-white text-xl font-bold p-3 bg-green-900 rounded-xl my-8 italic">
+  {{message}}
+</div>
+{%endif%}
+{% if message.tags == "warning" %}
+<div class="text-white text-xl font-bold p-3 bg-yellow-900 rounded-xl my-8 italic">
+  {{message}}
+</div>
+{%endif%}
+{% if message.tags == "info" %}
+<div class="text-white text-xl font-bold p-3 bg-blue-700 rounded-xl my-8 italic">
+  {{message}}
+</div>
+{%endif%}
+
+{%endfor%}
+<div class="text-3xl text-center mt-32 text-white font-bold">Login to the Admin Pannel :</div>
+<form method="post" class="text-white mx-[20%] mt-10">
+    {%csrf_token%}
+    {{form |crispy}}
+    <button
+    class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-base font-semibold text-white outline-none" type="submit"
+  >
+    Submit
+  </button>
+</form>
+
+
+<style>
+  .text-gray-700{
+    color: white;
+  }
+  .textinput{
+    color:black;
+  }
+  
+
+  option{
+    color:black;
+  }
+  .relative .text-gray-700{
+    color:black;
+  }
+  .numberinput {
+    color:black;
+  }
+  .passwordinput {
+    color:black;
+  }
+</style>
+
+{%endblock%}
